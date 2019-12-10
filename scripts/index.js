@@ -66,3 +66,40 @@ function categoryRetriever(category) {
 
 ///     Large Exercises
 //      create an `itemToCard` function
+
+
+function itemToCard(item) {
+    //  Looks like we only need name, price, and a div to put them in
+    // make div
+    const cardDiv = document.createElement("div");
+    // give it classname
+    cardDiv.className = "card";
+    // set name
+    const name = item.name;
+    // create element
+    const nameh2 = document.createElement("h2");
+    // change element textContext
+    nameh2.textContent = `${name}`;
+    // set price
+    const price = item.price;
+    // create element
+    const priceh3 = document.createElement("h3");
+    // change element textContext
+    priceh3.textContent = `${price}`;
+
+
+    // append
+    cardDiv.appendChild(nameh2);
+    cardDiv.appendChild(priceh3);
+    return cardDiv;
+}
+// console.log(itemToCard(menu.breakfast[0]));
+const sampleCard = itemToCard(menu.breakfast[0]);
+
+///     appendCardToMainContent
+//  Give it somewhere to append
+const jsMainContent = document.querySelector(".js-main-content");
+function appendCardToMainContent(card) {
+    jsMainContent.appendChild(card);
+}
+appendCardToMainContent(sampleCard);
