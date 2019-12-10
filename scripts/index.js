@@ -39,22 +39,19 @@ function appendMenuItem(item) {
 function appendAllMenuItems(array) {
     array.map(appendMenuItem)
 }
-// appendAllMenuItems(menuAsliItems);
+appendAllMenuItems(menuAsliItems);
 
 ///     Medium Exercises
 //      Add a click handler to each of the <li> elements
 function addClickHandler(array) {
     for(let item of array) {
         // console.log(item)
-        // placeholder function because JavaScript just NEEDS another arg
-        item.addEventListener("click", function() {
-           console.log('yay')
-        });
+        item.addEventListener("click", clickToShowMenu);
     } return array;
 }
 // now add the clickHandler and append
 let menuLiWithClicks = addClickHandler(menuAsliItems);
-appendAllMenuItems(menuLiWithClicks);
+// appendAllMenuItems(menuLiWithClicks);
 
 //      Retrieve value for a category name
 function categoryRetriever(category) {
@@ -102,4 +99,23 @@ const jsMainContent = document.querySelector(".js-main-content");
 function appendCardToMainContent(card) {
     jsMainContent.appendChild(card);
 }
-appendCardToMainContent(sampleCard);
+// appendCardToMainContent(sampleCard);
+
+///     Update click handler for each of the <li> elements
+function clickToShowMenu(liItem) {
+    jsMainContent.textContent = "";
+    // get the text content, go to menu.textContent
+
+    // console.log(this.textContent);
+    // console.log(categoryRetriever(this.textContent))
+
+    let itemsArr = categoryRetriever(this.textContent);
+    // console.log(itemsArr);
+    
+    // for each item of that menu, run the item to card, append to main content
+    
+    for (let item of itemsArr) {
+        item = itemToCard(item);
+        appendCardToMainContent(item);
+    }
+}
